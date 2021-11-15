@@ -6,11 +6,8 @@ require_once('Classes/Student.php');
 if (isset($_POST['student_name']) && !empty($_POST['student_name'])) {
     $student_name = $_POST['student_name'];
 
-    // Initialisation de l'objet
-    $student = new Student($student_name);
-
     // Appel de la fonction en charge de rechercher un utilisateur
-    $result = $student->search_student();
+    $result = Student::search_student($student_name);
 
     // Si aucun résultat j'adapte le message d'erreur retourné
     if (!$result) {
