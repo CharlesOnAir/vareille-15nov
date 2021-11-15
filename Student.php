@@ -2,6 +2,11 @@
 
 class Student
 {
+    /**
+     * @param string $prenom
+     * @param int $age
+     */
+
     public $Prenom;
     public $Age;
 
