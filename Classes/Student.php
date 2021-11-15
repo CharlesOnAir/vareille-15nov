@@ -22,7 +22,7 @@ class Student
 
     public function search_student()
     {
-        $students = json_decode(file_get_contents("./src/public/assets/json/students_list.json"));
+        $students = json_decode(file_get_contents("./src/public/assets/json/students.json"));
         foreach ($students as $student) {
             if ($student->student_name === $this->Prenom) {
                 $userAge = $student->student_age;
