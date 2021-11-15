@@ -16,20 +16,13 @@ class Student
         $this->Age = $age;
     }
 
-    public function add_student()
-    {
-        if (file_exists("./students.json")) {
-            $json_file = fopen("./students_list.json", "w");
-            fwrite($json_file, file_get_contents("./students.json"));
-            fclose($json_file);
-            return true;
-        }
-        return false;
-    }
+    /**
+     * @return bool
+     */
 
     public function search_student()
     {
-        $students = json_decode(file_get_contents("./students_list.json"));
+        $students = json_decode(file_get_contents("./src/public/assets/json/students_list.json"));
         foreach ($students as $student) {
             if ($student->student_name === $this->Prenom) {
                 $userAge = $student->student_age;
@@ -39,5 +32,25 @@ class Student
             }
         }
         return $userAge;
+    }
+
+    /**
+     * @return bool
+     */
+
+    public function add_student($students, $firstInput = false)
+    {
+        if ($firstInput) {
+            $students = array([
+                'student_name' => $nom_etudiant,
+                'student_age' => $age_etudiant
+            ]);
+        } else {
+            array_push($students, [
+                'student_name' => $this->Prenom,
+                'student_age' => $this->Age
+            ]);
+        }
+        return $students;
     }
 }

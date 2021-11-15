@@ -11,8 +11,8 @@
 <body>
     <section style="padding-top: 3vw; width: 30vw; padding-left: 3vw;">
         <div style="padding-bottom: 3vw;">
-            <h3>Faire une recherche</h3>
-            <a href="add_user.php" style="text-decoration: none;">Ajouter un utilisateur</a>
+            <h3>Ajouter un utilisateur</h3>
+            <a href="../search.php" style="text-decoration: none;">Chercher un utilisateur</a>
             <div class="alert alert-$typeError" role="alert">
                 $infoError
             </div>
@@ -21,9 +21,11 @@
             <form method="POST" action="">
                 <div class="mb-3">
                     <label for="nom_etudiant" class="form-label">Nom étudiant</label>
-                    <input type="text" class="form-control" name="student_name" id="nom_etudiant">
+                    <input type="text" class="form-control" name="student_name" id="nom_etudiant" required="required">
+                    <label for="age_etudiant" class="form-label">Âge étudiant</label>
+                    <input type="number" class="form-control" name="age_etudiant" id="age_etudiant" required="required">
                 </div>
-                <button type="submit" name="submit" class="btn btn-success">Rechercher</button>
+                <button type="submit" name="submit" class="btn btn-success">Ajouter un utilisateur</button>
             </form>
         </div>
     </section>
