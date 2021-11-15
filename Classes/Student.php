@@ -10,7 +10,7 @@ class Student
      * @param int $age
      */
 
-    public function __construct($prenom, $age)
+    public function __construct($prenom, $age = 0)
     {
         $this->Prenom = $prenom;
         $this->Age = $age;
@@ -25,5 +25,19 @@ class Student
             return true;
         }
         return false;
+    }
+
+    public function search_student()
+    {
+        $students = json_decode(file_get_contents("./students_list.json"));
+        foreach ($students as $student) {
+            if ($student->student_name === $this->Prenom) {
+                $userAge = $student->student_age;
+                break;
+            } else {
+                $userAge = false;
+            }
+        }
+        return $userAge;
     }
 }

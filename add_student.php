@@ -9,10 +9,10 @@ if (!file_exists('students.json')) {
 if (!empty($_GET['create'])) {
     $json_studient = fopen("students.json", "w");
     $students = [];
-    $i = 0;
-    while ($i < 5) {
+    $i = 1;
+    while ($i < 6) {
         array_push($students, [
-            'student_name' => 'Étudiant numéro : ' . $i,
+            'student_name' => 'Etudiant' . $i,
             'student_age' => $i
         ]);
         $i++;
