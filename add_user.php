@@ -1,6 +1,8 @@
 <?php
+
 // Intégration des classes
-require_once('Classes/Student.php');
+require_once('classes/Student.php');
+require_once("repository/StudentRepository.php");
 
 // Je récupère le contenu de la page add_user
 $page = file_get_contents("views/add_user.html");
@@ -12,16 +14,9 @@ if (isset($_POST['submit'])) {
     $age_etudiant = $_POST['age_etudiant'];
     // Je vérifie si rien n'est vide
     if (!empty($nom_etudiant) && !empty($age_etudiant)) {
-        // Je récupère le contenu du JSON des élèves
-        if (file_exists("src/public/assets/json/students.json"))
-            // Si le fichier existe je le décode
-            $students = json_decode(file_get_contents("src/public/assets/json/students.json"));
-        else
-            // Sinon je déclare un tableau
-            $students = array();
         // Si il existe des étudiants
-        $students = Student::add_student($students, $nom_etudiant, $age_etudiant);
-        file_put_contents("src/public/assets/json/students.json", json_encode($students));
+        $student = new Student($nom_etudiant, $age_etudiant);
+        StudentRepository::AddStudent($student);
         $displayError = 'success';
         $infoError = 'Utilisateur crée avec succès';
     } else {

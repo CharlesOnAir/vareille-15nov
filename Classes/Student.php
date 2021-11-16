@@ -4,16 +4,18 @@ class Student
 {
     public $Prenom;
     public $Age;
+    public $Id;
 
     /**
      * @param string $prenom
      * @param int $age
      */
 
-    public function __construct($prenom, $age = 0)
+    public function __construct($prenom, $age = 0, $id = false)
     {
         $this->Prenom = $prenom;
         $this->Age = $age;
+        $this->Id = $id;
     }
 
     /**
